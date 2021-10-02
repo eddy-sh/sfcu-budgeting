@@ -1,0 +1,19 @@
+{
+  "name": "sfcu-budgeting",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "https://github.com/eddy-sh/sfcu-budgeting",
+  "author": "Eddy <eddysh@protonmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/index.js",
+    "lint": "npx eslint ."
+  },
+  "dependencies": {
+    "fast-csv": "^4.3.6"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}
