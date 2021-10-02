@@ -1,2 +1,2 @@
 # sfcu-budgeting
-Budgeting for Stanford Federal Credit Union
+Budget information for Stanford Federal Credit Union using their account csv downloads.
