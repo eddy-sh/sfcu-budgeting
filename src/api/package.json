@@ -1,13 +1,13 @@
 {
   "name": "sfcu-budgeting",
   "version": "1.0.0",
-  "main": "src/app.js",
+  "main": "src/api/app.js",
   "repository": "https://github.com/eddy-sh/sfcu-budgeting",
   "author": "Eddy <eddysh@protonmail.com>",
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "start": "node src/app.js",
+    "start-api": "node src/api/app.js",
     "lint": "npx eslint ."
   },
   "dependencies": {
