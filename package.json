@@ -11,6 +11,7 @@
     "lint": "npx eslint ."
   },
   "dependencies": {
+    "express": "^4.17.1",
     "fast-csv": "^4.3.6"
   },
   "devDependencies": {
