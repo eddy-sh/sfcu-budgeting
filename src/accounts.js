@@ -5,7 +5,7 @@ import { toUSD } from './utils.js';
 import { budgetMapper } from './budgetMapper.js';
 import { budgetGroups } from './budgets.js';
 
-const accounts = (function(accountDataPath) {
+export const accounts = (function(accountDataPath) {
   let data = [];
 
   const _getData = async (accountDataPath) => {
@@ -52,6 +52,7 @@ const accounts = (function(accountDataPath) {
   return {
     init: async () => {
       await _getData(accountDataPath);
+      console.log("Data initialized...")
     },
 
     getData: () => {
@@ -80,12 +81,3 @@ const accounts = (function(accountDataPath) {
   };
 });
 
-const main = async () => {
-  const account = accounts('accounts/AccountHistory.csv');
-  await account.init();
-  
-  const budget = budgetMapper(account.getData(), budgetGroups)
-  console.log(budget)
-};
-
-main();
