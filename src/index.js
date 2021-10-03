@@ -1,6 +1,9 @@
-const fs = require('fs');
-const path = require('path');
-const csv = require('fast-csv');
+import { createReadStream } from 'fs';
+import { resolve as _resolve } from 'path';
+import { parse } from 'fast-csv';
+import { toUSD } from './utils.js';
+import { budgetMapper } from './budgetMapper.js';
+import { budgetGroups } from './budgets.js';
 
 const accounts = (function(accountDataPath) {
   let data = [];
@@ -9,8 +12,8 @@ const accounts = (function(accountDataPath) {
     const rows = [];
 
     const myPromise = new Promise((resolve, reject) => {
-      fs.createReadStream(path.resolve(accountDataPath))
-          .pipe(csv.parse({ignoreEmpty: true, headers: [
+      createReadStream(_resolve(accountDataPath))
+          .pipe(parse({ignoreEmpty: true, headers: [
             'accountNumber',
             'postDate',
             'check',
@@ -27,7 +30,7 @@ const accounts = (function(accountDataPath) {
             check: data.check,
             description: data.description,
             debit: data.debit,
-            credt: data.credit,
+            credit: data.credit,
             status: data.status,
             balance: data.balance,
             classification: data.classification,
@@ -80,9 +83,9 @@ const accounts = (function(accountDataPath) {
 const main = async () => {
   const account = accounts('accounts/AccountHistory.csv');
   await account.init();
-
-  console.log(`Debit: ${account.getTotalDebit()}`);
-  console.log(`Credit: ${account.getTotalCredit()}`);
+  
+  const budget = budgetMapper(account.getData(), budgetGroups)
+  console.log(budget)
 };
 
 main();

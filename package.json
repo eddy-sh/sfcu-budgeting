@@ -5,6 +5,7 @@
   "repository": "https://github.com/eddy-sh/sfcu-budgeting",
   "author": "Eddy <eddysh@protonmail.com>",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "start": "node src/index.js",
     "lint": "npx eslint ."
